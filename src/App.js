@@ -64,10 +64,10 @@ function App() {
 
   function clearComplete(event) {
     setTodos((todos) => {
-      return todos.filter( ( todo ) => {
-        console.log("todo", todo)
-        return !todo.completed
-      } );
+      return todos.filter((todo) => {
+        console.log("todo", todo);
+        return !todo.completed;
+      });
     });
   }
 
@@ -90,7 +90,17 @@ function App() {
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
           />
-          <Footer clearComplete={clearComplete} />
+          <Footer
+            clearComplete={clearComplete}
+            itemsLeft={
+              todos.filter((todo) => {
+                if (todo.completed === true) {
+                  return true;
+                }
+                return false;
+              }).length
+            }
+          />
         </section>
       </Route>
       <Route exact path="/completed">
@@ -115,7 +125,52 @@ function App() {
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
           />
-          <Footer clearComplete={clearComplete} />
+          <Footer
+            clearComplete={clearComplete}
+            itemsLeft={
+              todos.filter((todo) => {
+                if (todo.completed === true) {
+                  return true;
+                }
+                return false;
+              }).length
+            }
+          />
+        </section>
+      </Route>
+      <Route exact path="/active">
+        <section className="todoapp">
+          <header className="header">
+            <h1>todos</h1>
+            <input
+              className="new-todo"
+              placeholder="What needs to be done?"
+              autoFocus
+              onChange={(event) => handleChange(event)}
+              value={userInput}
+            />
+          </header>
+          <TodoList
+            todos={todos.filter((todo) => {
+              if (todo.completed === false) {
+                return true;
+              }
+              return false;
+            })}
+            toggleComplete={toggleComplete}
+            deleteTodo={deleteTodo}
+          />
+          <Footer
+            clearComplete={clearComplete}
+            itemsLeft={
+              todos.filter((todo) => {
+                if (todo.completed === true) {
+                  return true;
+                }
+                return false;
+              }).length
+            }
+          />
         </section>
       </Route>
     </>
