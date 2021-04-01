@@ -62,10 +62,13 @@ function App() {
     });
   }
 
-    function clearComplete( event ) {
-      setTodos( ( todos ) => {
-        return todos.filter( (todo) => !todo.completed)
-      })
+  function clearComplete(event) {
+    setTodos((todos) => {
+      return todos.filter( ( todo ) => {
+        console.log("todo", todo)
+        return !todo.completed
+      } );
+    });
   }
 
   return (
