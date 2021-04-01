@@ -30,8 +30,8 @@ function App() {
             completes: false,
           },
         ];
-      } );
-      setUserInput("")
+      });
+      setUserInput("");
     }
   }
 
@@ -54,19 +54,19 @@ function App() {
     });
   }
 
-  function deleteTodo( event, todoId ) {
-    // setTodos( ( todo ) => {
-    //   return todos.filter( ( todo ) => todo.id !== todoId )
-    // })
-
-    console. log("deleteTodo")
+  function deleteTodo(event, todoId) {
+    setTodos((todos) => {
+      return todos.filter((todo) => {
+        return todo.id !== todoId;
+      });
+    });
   }
 
-  function clearComplete( event ) {
-    // setTodos( ( todos ) => {
-    //   return todos.filter( (todo) => !todo.completed)
-    // })
-}
+    function clearComplete( event ) {
+      setTodos( ( todos ) => {
+        return todos.filter( (todo) => !todo.completed)
+      })
+  }
 
   return (
     <>
@@ -87,7 +87,7 @@ function App() {
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
           />
-          <Footer clearComplete={ clearComplete }/>
+          <Footer clearComplete={clearComplete} />
         </section>
       </Route>
       <Route exact path="/completed">
@@ -103,16 +103,16 @@ function App() {
             />
           </header>
           <TodoList
-            todos={ todos.filter( (todo) => {
-              if ( todo.completed === true ) {
-                return true
+            todos={todos.filter((todo) => {
+              if (todo.completed === true) {
+                return true;
               }
-              return false
-            } )}
+              return false;
+            })}
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
           />
-          <Footer clearComplete={ clearComplete }/>
+          <Footer clearComplete={clearComplete} />
         </section>
       </Route>
     </>
