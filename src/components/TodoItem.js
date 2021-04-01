@@ -6,9 +6,13 @@ function TodoItem(props) {
           className="toggle"
           type="checkbox"
           checked={props.completed}
+          onChange={(event) => props.toggleComplete(event, props.id)}
         />
         <label>{props.title}</label>
-        <button className="destroy" />
+        <button
+          className="destroy"
+          onClick={(event) => props.deleteTodo(event, props.id)}
+        />
       </div>
     </li>
   );
