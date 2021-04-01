@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer(props) {
   return (
     <footer className="footer">
@@ -6,16 +8,21 @@ function Footer(props) {
       </span>
       <ul className="filters">
         <li>
-          <a href="/">All</a>
+          <Link href="/">All</Link>
         </li>
         <li>
-          <a href="/active">Active</a>
+          <Link href="/active">Active</Link>
         </li>
         <li>
-          <a href="/completed">Completed</a>
+          <Link href="/completed">Completed</Link>
         </li>
       </ul>
-      <button className="clear-completed">Clear completed</button>
+      <button
+        className="clear-completed"
+        onClick={(event) => props.clearComplete(event)}
+      >
+        Clear completed
+      </button>
     </footer>
   );
 }
